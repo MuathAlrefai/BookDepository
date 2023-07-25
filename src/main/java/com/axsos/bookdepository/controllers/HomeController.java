@@ -28,13 +28,24 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @GetMapping("/adminHome")
+    public String adminHome(Model model, HttpSession session) {
+        if (session.getAttribute("user_id")!=null) {
+            Long userId = (Long) session.getAttribute("user_id");
+            User currentUser = userService.findUserById(userId);
+            model.addAttribute("currentUser", currentUser);
+            return "admin/adminHome.jsp";
+        }
+        return "redirect:/";
+    }
+
     @GetMapping("/databaseForms")
     public String databaseForms(Model model, HttpSession session){
         if (session.getAttribute("user_id")!=null) {
             Long userId = (Long) session.getAttribute("user_id");
             User currentUser = userService.findUserById(userId);
             model.addAttribute("currentUser", currentUser);
-            return "databaseForms.jsp";
+            return "admin/databaseForms.jsp";
         }
         return "redirect:/";
 

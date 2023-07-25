@@ -18,13 +18,13 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty(message="Name is required!")
-    @Size(min=2, max=20, message="Name must be between 2 and 20 characters")
+    @Size(min=2, max=30, message="Name must be between 2 and 30 characters")
     private String name;
     @NotNull(message = "price cannot be null")
     @Min(value = 1, message = "price cannot be lower than $1")
     private double price;
-    @NotEmpty(message="Name is required!")
-    @Size(min=10, max=200, message="Name must be between 10 and 200 characters")
+    @NotEmpty(message="Description is required!")
+    @Size(min=10, max=1000, message="Description must be between 10 and 1000 characters")
     private String description;
     @NotEmpty(message="Language is required!")
     @Size(min=3, max=20, message="Language must be between 3 and 20 characters")

@@ -53,6 +53,7 @@
   <br><br><br>
   <h2><a href="/databaseForms">Add to Database</a></h2>
 
+  <a href="/logout">logout</a>
 
 </body>
 </html>

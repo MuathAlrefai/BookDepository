@@ -53,59 +53,27 @@
 <br><br><br>
 <h2><a href="/bookForm">Add Book</a></h2>
 <h2><a href="/authorForm">Add Author</a></h2>
-<h2><a href="/addPublisher">Add Publisher</a></h2>
-<h2><a href="/addGenre">Add Genre</a></h2>
-
-<form:form action="/addBook" method="post" modelAttribute="book">
+<h2><a href="/publisherForm">Add Publisher</a></h2>
+<h2><a href="/genreForm">Add Genre</a></h2>
+<br><br>
+<h2>Add a Genre</h2>
+<form:form action="/addGenre" method="post" modelAttribute="genre">
   <form:label path="name">Name:</form:label>
   <form:input path="name" type="text"/>
   <form:errors path="name"/> <br> <br>
 
-  <form:label path="price">Price:</form:label>
-  <form:input path="price" type="number" step="0.01"/>
-  <form:errors path="price"/> <br> <br>
-
-  <form:label path="description">Description:</form:label>
-  <form:input path="description" type="text"/>
-  <form:errors path="description"/> <br> <br>
-
-  <form:label path="language">Language:</form:label>
-  <form:input path="language" type="text"/>
-  <form:errors path="language"/> <br> <br>
-
-  <form:label path="publicationDate">Publication Date:</form:label>
-  <form:input path="publicationDate" type="Date"/>
-  <form:errors path="publicationDate"/> <br> <br>
-
-  <form:label path="pages">Pages:</form:label>
-  <form:input path="pages" type="number"/>
-  <form:errors path="pages"/> <br> <br>
-
-  <form:label path="dimensions">Language:</form:label>
-  <form:input path="dimensions" type="text" placeholder="i.e. 5.75 x 0.6 x 8.25 inches"/>
-  <form:errors path="dimensions"/> <br> <br>
-
- <%-- <form:label path="author">Author:</form:label>
-  <form:select path="author">
-    <c:forEach>
-    <option value=""></option>
-    </c:forEach>
-  </form:select>
-
-  <form:label path="publisher">Publisher:</form:label>
-  <form:select path="publisher">
-    <c:forEach>
-      <option value=""></option>
-    </c:forEach>
-  </form:select>--%>
-
-  <%--<form:label path="genres">Genres:</form:label>
-  <form:input path="genres" type="checkbox"/>--%>
-
-
-
   <input type="submit" class="create" value="Create">
 </form:form>
+
+<br>
+  <h3>Available Genres (<label>${genres.size()}</label>):</h3>
+
+  <c:forEach var="genre" items="${genres}">
+    <input type="checkbox" value="${genre.id}">
+    <label>${genre.name}</label>
+  </c:forEach>
+
+<br>
 
 </body>
 </html>

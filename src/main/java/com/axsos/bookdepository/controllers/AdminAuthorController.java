@@ -1,9 +1,10 @@
 package com.axsos.bookdepository.controllers;
 
 
+import com.axsos.bookdepository.models.Author;
 import com.axsos.bookdepository.models.Genre;
 import com.axsos.bookdepository.models.User;
-import com.axsos.bookdepository.services.GenreService;
+import com.axsos.bookdepository.services.AuthorService;
 import com.axsos.bookdepository.services.UserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -17,39 +18,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class GenreController {
-    private final GenreService genreService;
+public class AdminAuthorController {
+    private final AuthorService authorService;
     private final UserService userService;
 
-
-    public GenreController(GenreService genreService, UserService userService) {
-        this.genreService = genreService;
+    public AdminAuthorController(AuthorService authorService, UserService userService) {
+        this.authorService = authorService;
         this.userService = userService;
     }
 
-    @GetMapping("/genreForm")
-    public String genreForm(@ModelAttribute("genre") Genre genre, Model model, HttpSession session) {
+    @GetMapping("/authorForm")
+    public String authorForm(@ModelAttribute("author") Author author, Model model, HttpSession session) {
         if (session.getAttribute("user_id") != null) {
             Long userId = (Long) session.getAttribute("user_id");
             User currentUser = userService.findUserById(userId);
             model.addAttribute("currentUser", currentUser);
 
-            model.addAttribute("genre", genre);
-            List<Genre> genreList = genreService.allGenres();
-            model.addAttribute("genres", genreList);
-            return "genreForm.jsp";
+            model.addAttribute("author", author);
+            List<Author> authorList = authorService.allAuthors();
+            model.addAttribute("authors", authorList);
+            return "admin/authorForm.jsp";
         }
         return "redirect:/";
     }
 
-    @PostMapping("/addGenre")
-    public String addGenre(@Valid @ModelAttribute("genre") Genre genre, BindingResult result){
+    @PostMapping("/addAuthor")
+    public String addAuthor(@Valid @ModelAttribute("author") Author author, BindingResult result){
 
-            if(result.hasErrors()){
-                return "genreForm.jsp";
-            }else {
-                genreService.createGenre(genre);
-                return "redirect:/home";
-            }
+        if(result.hasErrors()){
+            return "admin/authorForm.jsp";
+        }else {
+            authorService.createAuthor(author);
+            return "redirect:/authorForm";
+        }
     }
+
 }

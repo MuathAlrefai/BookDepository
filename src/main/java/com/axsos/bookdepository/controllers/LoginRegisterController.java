@@ -52,8 +52,13 @@ public class LoginRegisterController {
             model.addAttribute("newUser", new User());
             return "login.jsp";
         }
+        if(logUser.getId() == 1 || logUser.getId() == 2){
+            session.setAttribute("user_id", logUser.getId());
+            return "redirect:/adminHome";
+        }else{
         session.setAttribute("user_id", logUser.getId());
         return "redirect:/home";
+        }
     }
 
     @GetMapping("/logout")
