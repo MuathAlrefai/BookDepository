@@ -18,13 +18,15 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty(message="Name is required!")
-    @Size(min=2, max=30, message="Name must be between 2 and 30 characters")
+    @Size(min=2, max=100, message="Name must be between 2 and 100 characters")
     private String name;
+    @NotEmpty(message="cover is required!")
+    private String cover;
     @NotNull(message = "price cannot be null")
     @Min(value = 1, message = "price cannot be lower than $1")
     private double price;
     @NotEmpty(message="Description is required!")
-    @Size(min=10, max=1000, message="Description must be between 10 and 1000 characters")
+    @Size(min=10, max=3000, message="Description must be between 10 and 3000 characters")
     private String description;
     @NotEmpty(message="Language is required!")
     @Size(min=3, max=20, message="Language must be between 3 and 20 characters")
@@ -200,5 +202,13 @@ public class Book {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 }

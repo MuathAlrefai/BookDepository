@@ -23,13 +23,23 @@ public class LoginRegisterController {
 
 
     @GetMapping("/")
-    public String index(Model model, HttpSession session) {
+    public String loginForm(Model model, HttpSession session) {
         if (session.getAttribute("user_id")!=null) {
             return "redirect:/home";
         }
         model.addAttribute("newUser", new User());
         model.addAttribute("newLogin", new LoginUser());
-        return "login.jsp";
+        return "/user/loginTest.jsp";
+    }
+
+    @GetMapping("/registerForm")
+    public String registerForm(Model model, HttpSession session) {
+        if (session.getAttribute("user_id")!=null) {
+            return "redirect:/home";
+        }
+        model.addAttribute("newUser", new User());
+        model.addAttribute("newLogin", new LoginUser());
+        return "/user/register.jsp";
     }
 
     @PostMapping("/register")
@@ -38,7 +48,7 @@ public class LoginRegisterController {
         User regUser = userService.register(newUser, result);
         if(result.hasErrors()) {
             model.addAttribute("newLogin", new LoginUser());
-            return "login.jsp";
+            return "/user/register.jsp";
         }
         session.setAttribute("user_id", regUser.getId());
         return "redirect:/home";
@@ -50,9 +60,9 @@ public class LoginRegisterController {
         User logUser = userService.login(newLogin, result);
         if(result.hasErrors()) {
             model.addAttribute("newUser", new User());
-            return "login.jsp";
+            return "/user/loginTest.jsp";
         }
-        if(logUser.getId() == 1 || logUser.getId() == 2){
+        if(logUser.getId() == 1){
             session.setAttribute("user_id", logUser.getId());
             return "redirect:/adminHome";
         }else{
