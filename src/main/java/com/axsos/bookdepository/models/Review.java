@@ -18,6 +18,10 @@ public class Review {
     @JoinColumn(name = "book_id")
     private Book book;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
