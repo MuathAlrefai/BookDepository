@@ -27,14 +27,15 @@
 <div class="right-container">
   <div class="right-container__box">
     <div class="right-container-box">
-      <h2 class="right-container__h2">Nice to see you!</h2>
+      <h2 class="right-container__h2">ًWelcome to Book Depository!</h2>
       <p class="right-container__p">Enter your email and password to sign in</p>
     </div>
-<form:form action="/login" method="post" modelAttribute="newUser">
+<form:form action="/login" method="post" modelAttribute="newLogin">
     <div class="input-container">
       <form:label path="email" class="right-container__label">Email:</form:label>
       <form:input path="email" class="right-container__input" placeholder="Your email address"/>
-      <form:errors path="email" style="color:red;"/>
+      <form:errors path="email" style="color:red;"/> <br>
+
       <form:label path="password" class="right-container__label">Password:</form:label>
       <form:input path="password" type="password" class="right-container__input" placeholder="Your password"/>
       <form:errors path="password" style="color:red;"/>
