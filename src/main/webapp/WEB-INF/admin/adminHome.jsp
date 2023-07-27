@@ -61,7 +61,7 @@
                 <li class="thumb-wrap"><a href="">
                     <img class="thumb" src="${book.cover}" alt="${book.name}" style="width: 100px;">
                     <div class="thumb-info">
-                        <p class="thumb-title">${book.name}</p>
+                        <a href="/books/${book.id}"><p class="thumb-title">${book.name}</p></a>
                         <p class="thumb-user">By ${book.author.name}</p>
                         <p class="thumb-text"><span>$</span>${book.price}</p>
                     </div>
