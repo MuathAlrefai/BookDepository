@@ -27,7 +27,7 @@ public class HomeController {
         this.genreService = genreService;
     }
 
-    @GetMapping("/home")
+    /*@GetMapping("/home")
     public String home(Model model, HttpSession session) {
         if (session.getAttribute("user_id")!=null) {
             Long userId = (Long) session.getAttribute("user_id");
@@ -41,7 +41,7 @@ public class HomeController {
             return "user/home.jsp";
         }
         return "redirect:/";
-    }
+    }*/
 
     @GetMapping("/adminHome")
     public String adminHome(Model model, HttpSession session) {
@@ -50,6 +50,9 @@ public class HomeController {
             User currentUser = userService.findUserById(userId);
             model.addAttribute("currentUser", currentUser);
 
+
+            List<Book> specificBooks = bookService.getAssignedBooks(genreService.findGenre(userId));
+            model.addAttribute("specificBook", specificBooks);
             List<Book> bookList = bookService.allBooks();
             model.addAttribute("books", bookList);
             List<Genre> genreList = genreService.allGenres();
