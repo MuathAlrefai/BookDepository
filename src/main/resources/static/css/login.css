@@ -11,7 +11,7 @@ html, body {
 body {
     font-family: "Rubik", sans-serif;
     display: flex;
-    background: linear-gradient(to bottom, #0F123B, #000);
+    background: linear-gradient(to bottom, rgb(73, 54, 72), #111);
     color: #fff;
 }
 @media (max-width: 860px) {
@@ -31,10 +31,11 @@ body {
 }
 
 .left-container {
-    background-image: url(https://images.unsplash.com/photo-1686706763783-1378f598d8c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80);
+    background-image: url(https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    object-fit: fill;
 }
 
 .right-container {
