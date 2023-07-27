@@ -70,6 +70,9 @@ public class AdminBookController {
             Book bookId = bookService.findBook(id);
             model.addAttribute("book", bookId);
 
+            model.addAttribute("assignedGenres", genreService.getAssignedGenres(book));
+            model.addAttribute("unassignedGenres", genreService.getUnassignedGenres(book));
+
             List<Genre> genreList = genreService.allGenres();
             model.addAttribute("genres", genreList);
             return "admin/adminBookInfo.jsp";

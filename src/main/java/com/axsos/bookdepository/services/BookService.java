@@ -2,6 +2,7 @@ package com.axsos.bookdepository.services;
 
 
 import com.axsos.bookdepository.models.Book;
+import com.axsos.bookdepository.models.Genre;
 import com.axsos.bookdepository.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,15 @@ public class BookService {
     public void deleteBook(Long id){
         bookRepository.deleteById(id);
     }
+
+    public List<Book> getAssignedBooks(Genre genre){
+        return bookRepository.findAllByGenres(genre);
+    }
+
+    public List<Book> getUnassignedBooks(Genre genre){
+        return bookRepository.findByGenresNotContains(genre);
+    }
+
 
     public List<Book> allBooks(){
         return bookRepository.findAll();

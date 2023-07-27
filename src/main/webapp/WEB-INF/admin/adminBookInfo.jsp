@@ -68,7 +68,7 @@
 
     <label>Add Genre:</label>
     <select name="genreId">
-        <c:forEach var="genre" items="${genres}" >
+        <c:forEach var="genre" items="${unassignedGenres}" >
             <option value="${genre.id}">${genre.name}</option>
         </c:forEach>
     </select>
