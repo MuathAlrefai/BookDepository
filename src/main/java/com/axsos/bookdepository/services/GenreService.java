@@ -1,6 +1,7 @@
 package com.axsos.bookdepository.services;
 
 
+import com.axsos.bookdepository.models.Book;
 import com.axsos.bookdepository.models.Genre;
 import com.axsos.bookdepository.repositories.GenreRepository;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,14 @@ public class GenreService {
 
     public Genre updateGenre(Genre genre){
         return genreRepository.save(genre);
+    }
+
+    public List<Genre> getAssignedGenres(Book book){
+        return genreRepository.findAllByBooks(book);
+    }
+
+    public List<Genre> getUnassignedGenres(Book book){
+        return genreRepository.findByBooksNotContains(book);
     }
 
     public void deleteGenre(Long id){

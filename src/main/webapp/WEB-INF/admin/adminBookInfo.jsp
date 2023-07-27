@@ -55,9 +55,27 @@
 
 <h2>Im the admin</h2>
 
-<a href="/logout">logout</a>
+<a href="/logout">logout</a> <br>
+<img src="${book.cover}" style="width: 100px;"> <br>
+<c:out value="${book.name}"/> <br> <br>
+<p>Genres for this book:</p>
+<c:forEach var="genre" items="${book.genres}">
+    <p><b><c:out value="${genre.name}"/></b></p>
+</c:forEach>
+<hr>
 
+<form action="/addGenreToBook/${id}" method="post">
 
+    <label>Add Genre:</label>
+    <select name="genreId">
+        <c:forEach var="genre" items="${unassignedGenres}" >
+            <option value="${genre.id}">${genre.name}</option>
+        </c:forEach>
+    </select>
+    <br> <br>
+
+    <input type="submit" class="create" value="Add">
+</form>
 
 
 </body>
