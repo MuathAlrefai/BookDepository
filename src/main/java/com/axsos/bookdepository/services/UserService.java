@@ -32,6 +32,11 @@ public class UserService {
             return null;
         }
     }
+
+    public void banUser(Long id){
+        userRepo.deleteById(id);
+    }
+
     public User findUserByEmail(String email) {
         Optional<User> optionalUser = userRepo.findByEmail(email);
         if(optionalUser.isPresent()) {

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Reg
-  Date: 7/24/2023
-  Time: 9:44 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -16,103 +9,199 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/homePage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
   <title>Book Depository</title>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body class="p-3 m-0 border-0 bd-example">
+<body class="p-0 m-0 border-0 bd-example">
 
-<!-- Example Code -->
-
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(73, 54, 72); padding: 20px; margin: -16px; box-shadow: -1px 4px 5px black;">
+<!-- NAV BAR -->
+<nav class="p-4 navbar navbar-expand-lg navbar-light align-content-center" style="background-color: rgb(76 57 77); box-shadow: -1px 4px 5px black;">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#">Book Depository</a>
+    <img src="/assets/logo.png" alt="logo" style="margin: 0; width: 60px;">
+    <a class="navbar-brand text-white" href="/home" style="line-height: 20px;">Book<br>Depository</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse flex-box" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="/profile">${currentUser.userName}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link active text-white" aria-current="page" href="/home">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled text-white">Disabled</a>
-        </li>
+        <c:if test="${currentUser.id == 1}">
+          <li class="nav-item">
+            <a class="nav-link" href="/databaseForms" style="color: rgb(200 75 127);">Database</a></a>
+          </li>
+        </c:if>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search Books" style="border-radius: 5px;">
-        <button class="btn btn-outline-success" type="submit" style="color: black; border: none; background-color: white; border-radius: 5px;">Search</button>
+      <form class="d-flex" role="search" action="/search" method="get" style="margin-right: 6%; width: 50%;">
+        <input class="form-control me-2" type="search" name="keyword" placeholder="Search For Titles" aria-label="Search Books" style="border-radius: 3px;">
+        <button class="btn btn" type="submit" style="color: white; background-color: #10bdd7; border-radius: 3px;">Search</button>
       </form>
+      <ul>
+        <div style="display: flex; justify-content: space-evenly; align-items: center; gap: 80px;">
+          <li>
+            <img src="/assets/shipping.png" alt="shipping" style="width: 150px; box-shadow: 3px 3px 3px black; padding: 10px; border: transparent; border-radius: 10px;">
+          </li>
+          <div style="display: flex; justify-content: space-evenly; align-items: center; gap: 40px;">
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutUs">About</a>
+            </li>
+            <c:if test="${currentUser != null}">
+              <li class="nav-item">
+                <a class="btn btn-group-vertical" style="background-color: #10bdd7; color: white;" href="/logout">Logout</a>
+              </li>
+            </c:if>
+            <c:if test="${currentUser == null}">
+              <li class="nav-item">
+                <a class="btn btn-outline-success" href="/">Login</a>
+              </li>
+            </c:if>
+          </div>
+
+        </div>
+      </ul>
     </div>
   </div>
 </nav>
-<br><br><br>
-<h2><a href="/bookForm">Add Book</a></h2>
-<h2><a href="/authorForm">Add Author</a></h2>
-<h2><a href="/publisherForm">Add Publisher</a></h2>
-<h2><a href="/genreForm">Add Genre</a></h2>
+<!-- NAV BAR -->
+<%-- CONTENT --%>
+<br><br>
+<div style="margin-left: 50px; margin-right: 50px;">
+  <br><br><br>
+  <h2>Add a Book</h2>
+  <form:form action="/addBook" method="post" modelAttribute="book">
+    <form:label path="name">Name:</form:label>
+    <form:input path="name" type="text"/>
+    <form:errors path="name"/> <br> <br>
 
-<form:form action="/addBook" method="post" modelAttribute="book">
-  <form:label path="name">Name:</form:label>
-  <form:input path="name" type="text"/>
-  <form:errors path="name"/> <br> <br>
+    <form:label path="price">Price:</form:label>
+    <form:input path="price" type="number" step="0.01"/>
+    <form:errors path="price"/> <br> <br>
 
-  <form:label path="price">Price:</form:label>
-  <form:input path="price" type="number" step="0.01"/>
-  <form:errors path="price"/> <br> <br>
+    <form:label path="cover">Cover:</form:label>
+    <form:input path="cover" type="text"/>
+    <form:errors path="cover"/> <br> <br>
 
-  <form:label path="cover">Cover:</form:label>
-  <form:input path="cover" type="text"/>
-  <form:errors path="cover"/> <br> <br>
+    <form:label path="description">Description:</form:label>
+    <form:input path="description" type="text"/>
+    <form:errors path="description"/> <br> <br>
 
-  <form:label path="description">Description:</form:label>
-  <form:input path="description" type="text"/>
-  <form:errors path="description"/> <br> <br>
+    <form:label path="language">Language:</form:label>
+    <form:input path="language" type="text"/>
+    <form:errors path="language"/> <br> <br>
 
-  <form:label path="language">Language:</form:label>
-  <form:input path="language" type="text"/>
-  <form:errors path="language"/> <br> <br>
+    <form:label path="publicationDate">Publication Date:</form:label>
+    <form:input path="publicationDate" type="Date"/>
+    <form:errors path="publicationDate"/> <br> <br>
 
-  <form:label path="publicationDate">Publication Date:</form:label>
-  <form:input path="publicationDate" type="Date"/>
-  <form:errors path="publicationDate"/> <br> <br>
+    <form:label path="pages">Pages:</form:label>
+    <form:input path="pages" type="number"/>
+    <form:errors path="pages"/> <br> <br>
 
-  <form:label path="pages">Pages:</form:label>
-  <form:input path="pages" type="number"/>
-  <form:errors path="pages"/> <br> <br>
+    <form:label path="dimensions">Dimensions:</form:label>
+    <form:input path="dimensions" type="text" placeholder="i.e. 5.75 x 0.6 x 8.25 inches"/>
+    <form:errors path="dimensions"/> <br> <br>
 
-  <form:label path="dimensions">Dimensions:</form:label>
-  <form:input path="dimensions" type="text" placeholder="i.e. 5.75 x 0.6 x 8.25 inches"/>
-  <form:errors path="dimensions"/> <br> <br>
+    <form:label path="author">Author:</form:label>
+    <form:select path="author">
+      <c:forEach var="author" items="${authors}" >
+        <option value="${author.id}">${author.name}</option>
+      </c:forEach>
+    </form:select>
+    <br> <br>
+    <form:label path="publisher">Publisher:</form:label>
+    <form:select path="publisher">
+      <c:forEach var="publisher" items="${publishers}">
+        <option value="${publisher.id}">${publisher.name}</option>
+      </c:forEach>
+    </form:select>
+    <br> <br>
+    <input type="submit" class="btn btn-dark" value="Create">
+  </form:form>
 
- <form:label path="author">Author:</form:label>
-  <form:select path="author">
-    <c:forEach var="author" items="${authors}" >
-    <option value="${author.id}">${author.name}</option>
-    </c:forEach>
-  </form:select>
-  <br> <br>
-  <form:label path="publisher">Publisher:</form:label>
-  <form:select path="publisher">
-    <c:forEach var="publisher" items="${publishers}">
-      <option value="${publisher.id}">${publisher.name}</option>
-    </c:forEach>
-  </form:select>
   <br>
-  <input type="submit" class="create" value="Create">
-</form:form>
+  <h3>Available Books (<label>${books.size()}</label>):</h3>
 
-<br>
-<h3>Available Books (<label>${books.size()}</label>):</h3>
+  <c:forEach var="book" items="${books}">
+    <input type="checkbox" value="${book.id}">
+    <label>${book.name}</label>
+  </c:forEach>
+</div>
 
-<c:forEach var="book" items="${books}">
-  <input type="checkbox" value="${book.id}">
-  <label>${book.name}</label>
-</c:forEach>
+<br><br><br>
+<%-- CONTENT --%>
+<%--FOOTER--%>
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+          <div class="logo-widget footer-widget">
+            <div style="display: flex; justify-content: start; align-items: center;">
+              <img src="/assets/logo.png" alt="logo" style="margin-left: -20px; width: 20%;">
+              <figure class="logo-box"><a class="navbar-brand text-white" href="/home" style="line-height: 20px;">Book<br>Depository</a></figure>
+            </div>
+            <div class="text">
+              <p>At Book Depository, we pride ourselves on offering an extensive range of books that cater to diverse interests and preferences. From bestselling novels and literary classics to non-fiction titles covering topics like science, history, self-help, and more – there's a book waiting just for you.</p>
+            </div>
+            <ul class="footer-social">
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="https://github.com/MuathAlrefai/BookDepository"><i class="fab fa-whatsapp"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 offset-lg-4 footer-column">
+          <div class="service-widget footer-widget">
+            <div class="footer-title">Contacts</div>
+            <ul class="list">
+              <li><a href="#">If you have any questions or inquiries, feel free to reach out to us.</a></li>
+              <li><a href="#">Book Depository</a></li>
+              <li><a href="#">+970(599) 99-9999</a></li>
+              <li><a href="#">java@bookdepository.com</a></li>
+              <li><a href="#">Ramallah - Al-Bireh</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<%--FOOTER--%>
 
+
+<!-- SECOND FOOTER -->
+<div class="footer-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 column">
+        <div class="copyright"><a href="#">Book Depository</a> &copy; 2023 All Right Reserved</div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 column">
+        <ul class="footer-nav">
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SECOND FOOTER -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src="/js/bookLoop.js"></script>
+<!-- SLIDER -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.js'></script>
+<script  src="./script.js"></script>
 </body>
 </html>

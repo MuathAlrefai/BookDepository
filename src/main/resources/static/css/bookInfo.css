@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400');
+
+
+
+body {
+    color: #2d3436;
+    font-family: 'PT Serif'; !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
+}
+
+.content__profile,
+.profile,
+.content__bio {
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    justify-content: center;
+    margin: 0;
+}
+.containerInfo
+{
+    background: #fafafa;
+    box-shadow:0 0 50px 0 rgba(30,20,80,.08),0 0 50px 0 rgba(30,20,80,.08);
+    height: 50%;
+    min-height: 0px;
+    min-width: 400px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.container__content {
+    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-items: stretch;
+    height: 100%;
+}
+
+.content__profile {
+    background: #382c3a;
+    color: white;
+}
+
+.profile {
+    text-align: center;
+}
+
+.content__profile img {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    height: auto;
+    padding: .8rem;
+    width: 14rem;
+}
+
+.content__profile h1 {
+    font: 3rem Sacramento;
+    margin-top: .5em;
+}
+
+.content__border {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+    margin-top: -2rem;
+    width: 50%;
+}
+
+.content__profile p {
+    font-size: 1.1rem;
+    margin: .25rem;
+}
+
+.content__bio {
+    background: #fafafa;
+    padding: 3em;
+    text-align: center;
+}
+
+.content__bio hr {
+    width: 50%;
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .container {
+        margin-top: -250px;
+    }
+
+    .container__content {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 2fr;
+    }
+
+    .content__profile {
+        flex-flow: row wrap;
+        justify-content: space-around;
+        padding: 1em;
+    }
+
+    .content__profile img {
+        height: 12rem;
+        margin: 1rem;
+        width: 12rem;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .container {
+        margin-top: -350px;
+    }
+
+    .content__profile img {
+        margin-bottom: -1rem;
+    }
+
+    .content__profile p {
+        font-size: 1rem;
+        margin: .1rem;
+    }
+    .content__bio {
+        background: #fafafa;
+        padding: 2em;
+        text-align: center;
+    }
+    .content__bio h2 {
+        font-size: 1.2rem;
+    }
+
+    .content__bio p {
+        font-size: .9rem;
+    }
+}
+
+/*#######################  REVIEWS  ############################*/
+
+.card {
+    background-color: #fafafa;
+    border: none;
+    border-radius: 10px;
+}
+
+.form-color {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+}
+
+.form-control {
+    height: 48px;
+    border-radius: 25px
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #35b69f;
+    outline: 0;
+    box-shadow: none;
+    text-indent: 10px
+}
+
+.c-badge {
+    background-color: #35b69f;
+    color: white;
+    height: 20px;
+    font-size: 11px;
+    width: 92px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px
+}
+
+.comment-text {
+    font-size: 13px
+}
+
+.wish {
+    color: #35b69f
+}
+
+.user-feed {
+    font-size: 14px;
+    margin-top: 12px
+}

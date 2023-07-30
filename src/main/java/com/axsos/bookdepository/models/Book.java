@@ -45,10 +45,6 @@ public class Book {
     @JoinColumn(name = "author_id")
     private Author author;
 
-    //one or many book(s) per one purchase
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Purchase purchase;
-
     //many books per author
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id")
@@ -66,6 +62,9 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
     private List<Genre> genres;
+
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
+    List<Purchase> purchases;
 
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -156,14 +155,6 @@ public class Book {
         this.author = author;
     }
 
-    public Purchase getPurchase() {
-        return purchase;
-    }
-
-    public void setPurchase(Purchase purchase) {
-        this.purchase = purchase;
-    }
-
     public Publisher getPublisher() {
         return publisher;
     }
@@ -210,5 +201,13 @@ public class Book {
 
     public void setCover(String cover) {
         this.cover = cover;
+    }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
     }
 }
