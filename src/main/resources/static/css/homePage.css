@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
 html, body {
     margin: 0;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
-    background-color: #E7E0E0;
+    background-color: white;
+    color: #2d3436;
+    font-size: 16px;
+    font-family: 'Helvetica', 'Arial', sans-serif; !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 .video-sec-wrap {
     width: 100%;
@@ -12,7 +20,6 @@ html, body {
 .video-sec {
     width: 85%;
     margin: 3em auto;
-    border-bottom: 2px solid #353535;
     text-align: left;
 }
 .video-sec-middle {
@@ -36,6 +43,7 @@ html, body {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
     opacity: 1;
     transition: all .2s ease-in-out;
+    border-radius: 10px;
 }
 .thumb:hover {
     opacity: .8;
@@ -50,19 +58,20 @@ html, body {
 .thumb-title {
     color: black;
     margin: 0;
-    font-size: 1.2em;
+    font-size: 1em;
+    width: 60%;
 }
 .thumb-user {
     color: #7e7e7e;
     display: block;
     margin: 0;
-    font-size: .9em;
+    font-size: .8em;
 }
 .thumb-text {
-    color: tomato;
+    color: rgb(189 75 125);
     display: inline-block;
     margin: 0;
-    font-size: .8em;
+    font-size: 1em;
 }
 .video-sec-title {
     font-weight: bolder;
@@ -126,7 +135,7 @@ ul {
 
 .main-footer{
     position: relative;
-    background: #1e2129;
+    background: linear-gradient(to bottom, rgb(73, 54, 72), #111);
 }
 
 .footer-content{
@@ -136,11 +145,11 @@ ul {
 .footer-content:before{
     position: absolute;
     content: '';
-    background: url(https://i.ibb.co/jyRLrBZ/world-map.png);
-    width: 744px;
+    background: url(https://i.imgur.com/6N5AXzj.png);
+    width: 444px;
     height: 365px;
-    top: 50px;
-    right: 0px;
+    top: 80px;
+    right: 430px;
     background-size: cover;
     background-repeat: no-repeat;
     animation-name: float-bob;
@@ -234,7 +243,7 @@ ul {
 
 .footer-bottom{
     position: relative;
-    background: #13151a;
+    background: linear-gradient(to top, rgb(73, 54, 72), #111);
     padding: 25px 0px 22px 0px;
 }
 .footer-bottom .copyright,
@@ -292,20 +301,21 @@ body {
     margin: 0;
 }
 
-.title {
-    font-size: 2.5rem;
-    font-family: system-ui;
+.titleSlide {
+    font-size: 1.8rem;
+    font-family: sans-serif;
+    text-align: center;
     line-height: 1.1;
     font-weight: 300;
-    color: #fff;
+    color: black;
     margin: 4rem auto 1rem;
     width: 85%;
     max-width: 1280px;
 }
 
 .slider {
-    width: 85%;
-    max-width: 1280px;
+    width: 45%;
+    max-width: 1080px;
     margin: 0 auto;
 }
 
@@ -419,4 +429,93 @@ body {
     opacity: 1;
     pointer-events: auto;
     cursor: pointer;
+}
+
+
+/*##############################  ADMIN TABLES   ####################################*/
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap");
+
+/* Table */
+.customer-table {
+    font-size: 0.625em;
+    font-family: "Noto Sans KR", sans-serif;
+    width: 100%;
+    max-width: 1024px;
+    margin: 100px auto;
+    border-collapse: collapse;
+    text-align: center;
+    box-shadow: 0 2px 2px #e6e6e6;
+}
+
+caption {
+    font-weight: bold;
+    padding: 10px;
+    background-color: #544257;
+}
+
+thead th {
+    background-color: #382c3a;
+}
+
+caption,
+thead th {
+    color: #fff;
+}
+
+th {
+    padding: 10px 5px;
+}
+
+tfoot {
+    text-align: left;
+    background-color: #e7dfd5;
+    font-weight: lighter;
+    font-size: 0.8em;
+}
+
+tbody th,
+tbody td {
+    text-align: center;
+}
+
+tbody tr {
+    border-bottom: 2px solid transparent;
+}
+
+tbody tr:hover {
+    border-bottom: 2px solid #84a9ac;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #e7dfd5;
+}
+
+/* Media Queries */
+@media (max-width: 320px) {
+    .customer-table {
+        font-size: 0.55em;
+    }
+}
+
+@media (min-width: 411px) {
+    .customer-table {
+        font-size: 0.71875em; /*11.5px*/
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 1.125em; /*16px*/
+    }
+
+    caption {
+        padding: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        font-size: 1.25em; /*20px*/
+    }
 }

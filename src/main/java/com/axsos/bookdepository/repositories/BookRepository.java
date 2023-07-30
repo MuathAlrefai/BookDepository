@@ -13,4 +13,5 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     List<Book> findAll();
     List<Book> findAllByGenres(Genre genre);
     List<Book> findByGenresNotContains(Genre genre);
+    List<Book> findByNameContainingIgnoreCase(String name);
 }

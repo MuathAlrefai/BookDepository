@@ -29,6 +29,7 @@ public class PublisherService {
         publisherRepository.deleteById(id);
     }
 
+
     public List<Publisher> allPublishers(){
         return publisherRepository.findAll();
     }

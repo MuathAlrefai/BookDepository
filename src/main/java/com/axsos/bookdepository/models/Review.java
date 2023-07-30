@@ -2,6 +2,8 @@ package com.axsos.bookdepository.models;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -12,6 +14,8 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty
+    @Size(min = 1, max = 2000)
     private String review;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -61,6 +65,14 @@ public class Review {
 
     public void setBook(Book book) {
         this.book = book;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getCreatedAt() {

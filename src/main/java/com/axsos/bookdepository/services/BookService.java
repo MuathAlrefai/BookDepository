@@ -50,4 +50,9 @@ public class BookService {
             return null;
         }
     }
+
+    public List<Book> searchBooks(String keyword) {
+        return bookRepository.findByNameContainingIgnoreCase(keyword);
+    }
+
 }
