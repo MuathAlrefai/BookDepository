@@ -70,7 +70,29 @@
     </div>
 </nav>
 <!-- NAV BAR -->
-
+<%-- CONTENT --%>
+<br><br>
+<h1 style="text-align: center;">Books Published By <span style="color: rgb(189 75 125);">${publisher.name}</span></h1>
+<hr>
+<%-- BOOK LOOP --%>
+<article class="video-sec-wrap">
+    <div class="video-sec">
+        <ul class="video-sec-middle" id="vid-grid">
+            <c:forEach var="book" items="${publisher.publishedBooks}">
+                <li class="thumb-wrap"><a href="">
+                    <a href="/books/${book.id}"><img class="thumb" src="${book.cover}" alt="${book.name}" style="width: 150px; height: auto;"></a>
+                    <div class="thumb-info">
+                        <a class="thumb-title" href="/books/${book.id}"><p class="thumb-title">${book.name}</p></a>
+                        <p class="thumb-user">By ${book.author.name}</p>
+                        <p class="thumb-text"><span>$</span>${book.price}</p>
+                    </div>
+                </a></li>
+            </c:forEach>
+        </ul>
+    </div>
+</article>
+<%-- BOOK LOOP --%>
+<%-- CONTENT --%>
 <%--FOOTER--%>
 <footer class="main-footer">
     <div class="container">
