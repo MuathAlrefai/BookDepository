@@ -70,6 +70,84 @@
         </div>
     </div>
 </nav>
+<!-- NAV BAR -->
+<%-- BOOK LOOP --%>
+<article class="video-sec-wrap">
+    <div class="video-sec">
+        <ul class="video-sec-middle" id="vid-grid">
+            <c:forEach var="book" items="${books}">
+                <li class="thumb-wrap"><a href="">
+                    <a href="/books/${book.id}"><img class="thumb" src="${book.cover}" alt="${book.name}" style="width: 150px; height: auto;"></a>
+                    <div class="thumb-info">
+                        <a class="thumb-title" href="/books/${book.id}"><p class="thumb-title">${book.name}</p></a>
+                        <p class="thumb-user">By <a href="/author/${book.author.id}" style="text-decoration: none; color: #7e7e7e;">${book.author.name}</a></p>
+                        <p class="thumb-text"><span>$</span>${book.price}</p>
+                    </div>
+                </a></li>
+            </c:forEach>
+        </ul>
+    </div>
+</article>
+<%-- BOOK LOOP --%>
+
+<%--FOOTER--%>
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                    <div class="logo-widget footer-widget">
+                        <div style="display: flex; justify-content: start; align-items: center;">
+                            <img src="/assets/logo.png" alt="logo" style="margin-left: -20px; width: 20%;">
+                            <figure class="logo-box"><a class="navbar-brand text-white" href="/home" style="line-height: 20px;">Book<br>Depository</a></figure>
+                        </div>
+                        <div class="text">
+                            <p>At Book Depository, we pride ourselves on offering an extensive range of books that cater to diverse interests and preferences. From bestselling novels and literary classics to non-fiction titles covering topics like science, history, self-help, and more – there's a book waiting just for you.</p>
+                        </div>
+                        <ul class="footer-social">
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://github.com/MuathAlrefai/BookDepository"><i class="fab fa-whatsapp"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 offset-lg-4 footer-column">
+                    <div class="service-widget footer-widget">
+                        <div class="footer-title">Contacts</div>
+                        <ul class="list">
+                            <li><a href="#">If you have any questions or inquiries, feel free to reach out to us.</a></li>
+                            <li><a href="#">Book Depository</a></li>
+                            <li><a href="#">+970(599) 99-9999</a></li>
+                            <li><a href="#">java@bookdepository.com</a></li>
+                            <li><a href="#">Ramallah - Al-Bireh</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<%--FOOTER--%>
+
+
+<!-- SECOND FOOTER -->
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 column">
+                <div class="copyright"><a href="#">Book Depository</a> &copy; 2023 All Right Reserved</div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 column">
+                <ul class="footer-nav">
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SECOND FOOTER -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
