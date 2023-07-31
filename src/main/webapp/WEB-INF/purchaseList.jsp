@@ -72,7 +72,71 @@
 </nav>
 <!-- NAV BAR -->
 
+<br><br>
+<%-- TABLE --%>
+<main>
+  <table class="customer-table">
+    <caption style="text-align: center;">Purchase History</caption>
+    <thead>
+    <tr>
+      <th>Book</th>
+      <th>Price</th>
+      <th>Purchase Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="purchase" items="${currentUser.purchases}">
+      <tr>
+        <th><a href="/books/${purchase.book.id}"><c:out value="${purchase.book.name}"/></a></th>
+        <th><span>$</span><c:out value="${purchase.book.price}"/></th>
+        <th><fmt:formatDate value="${purchase.createdAt}" type="date" pattern="dd-MMM-yyyy"/></th>
+      </tr>
+    </c:forEach>
+    </tbody>
+  </table>
+</main>
+<br><br><br><br><br>
+<%-- CONTENT --%>
 
+<%--FOOTER--%>
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+          <div class="logo-widget footer-widget">
+            <div style="display: flex; justify-content: start; align-items: center;">
+              <img src="/assets/logo.png" alt="logo" style="margin-left: -20px; width: 20%;">
+              <figure class="logo-box"><a class="navbar-brand text-white" href="/home" style="line-height: 20px;">Book<br>Depository</a></figure>
+            </div>
+            <div class="text">
+              <p>At Book Depository, we pride ourselves on offering an extensive range of books that cater to diverse interests and preferences. From bestselling novels and literary classics to non-fiction titles covering topics like science, history, self-help, and more – there's a book waiting just for you.</p>
+            </div>
+            <ul class="footer-social">
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="https://github.com/MuathAlrefai/BookDepository"><i class="fab fa-whatsapp"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 offset-lg-4 footer-column">
+          <div class="service-widget footer-widget">
+            <div class="footer-title">Contacts</div>
+            <ul class="list">
+              <li><a href="#">If you have any questions or inquiries, feel free to reach out to us.</a></li>
+              <li><a href="#">Book Depository</a></li>
+              <li><a href="#">+970(599) 99-9999</a></li>
+              <li><a href="#">java@bookdepository.com</a></li>
+              <li><a href="#">Ramallah - Al-Bireh</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<%--FOOTER--%>
 <!-- SECOND FOOTER -->
 <div class="footer-bottom">
   <div class="container">
