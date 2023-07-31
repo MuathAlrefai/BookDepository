@@ -73,7 +73,23 @@
 <!-- NAV BAR -->
 
 
-
+<!-- SECOND FOOTER -->
+<div class="footer-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 column">
+        <div class="copyright"><a href="#">Book Depository</a> &copy; 2023 All Right Reserved</div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 column">
+        <ul class="footer-nav">
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SECOND FOOTER -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
