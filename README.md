@@ -1,4 +1,5 @@
 
+
 ![](https://i.imgur.com/h9Ym8FU.png)
 
 
@@ -63,7 +64,7 @@ Book Depository is an online platform designed to provide users with access to a
 ## Tech Stack
 
 #### This project was built using the Java Fundamentals Stack, and uses the following technologies:
-- Backend - Framework: Java Spring Boot. 
+- Backend - Framework: Java Spring Boot. 
 - Frontend Development: HTML, CSS, Bootstrap and JS.
 - IDE: IntelliJ
 - Database: MySQL Workbench
@@ -79,3 +80,5 @@ Book Depository is an online platform designed to provide users with access to a
 [Muath Al-Refai](https://github.com/MuathAlrefai)
 
 [Mahmoud Attieh](https://github.com/Mahmoud-Attieh)
+
+
