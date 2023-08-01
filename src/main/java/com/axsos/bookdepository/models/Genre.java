@@ -1,6 +1,7 @@
 package com.axsos.bookdepository.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,6 +18,7 @@ public class Genre {
     private String name;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JsonManagedReference
     @JoinTable(
             name = "books_genres",
             joinColumns = @JoinColumn(name = "genre_id"),

@@ -111,28 +111,16 @@ public class BookController {
     }
 
     @GetMapping("/search")
-    public String searchBooks(@RequestParam("keyword") String keyword,
+    public String search(@RequestParam("keyword") String keyword,
                               Model model,
                               HttpSession session) {
         Long userId = (Long) session.getAttribute("user_id");
         User currentUser = userService.findUserById(userId);
         model.addAttribute("currentUser", currentUser);
 
-        List<Book> books = bookService.searchBooks(keyword);
+        List<Book> books = bookService.searchBook(keyword);
         model.addAttribute("books", books);
 
         return "searchResults.jsp";
     }
-
-/*        @GetMapping("/hireadeveloperr/{id}")
-    public String triggerMail(
-            @PathVariable("id") Long id
-    ) {
-        User user = userServ.findUserById(id);
-        emailSenderService.sendSimpleEmail(user.getEmail(),
-                "This is email body",
-                "Test Test Test");
-        return "redirect:/successcompany";
-    }*/
-
 }

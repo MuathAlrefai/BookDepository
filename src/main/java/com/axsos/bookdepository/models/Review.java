@@ -1,6 +1,7 @@
 package com.axsos.bookdepository.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -19,6 +20,7 @@ public class Review {
     private String review;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
     @JoinColumn(name = "book_id")
     private Book book;
 

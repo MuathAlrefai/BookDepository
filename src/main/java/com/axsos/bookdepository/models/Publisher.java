@@ -1,6 +1,7 @@
 package com.axsos.bookdepository.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -16,6 +17,7 @@ public class Publisher {
     private String name;
 
     @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Book> publishedBooks;
 
     @Column(updatable=false)
