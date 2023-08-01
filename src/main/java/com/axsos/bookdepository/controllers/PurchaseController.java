@@ -32,12 +32,10 @@ public class PurchaseController {
         User user = purchase.getUser();
         emailSenderService.sendSimpleEmail(user.getEmail(),
                 "Thank You for Your Purchase from Book Depository!",
-                "Dear " + user.getUserName() + ",\n" +
-                        "We wanted to take a moment to express our heartfelt gratitude for your recent purchase from Book Depository. We truly appreciate your trust in us and choosing us as your source for books.\n" +
-                        "At Book Depository, we strive to provide an exceptional online shopping experience with a wide selection of books and convenient delivery services. Your support not only helps us continue doing what we love but also encourages us to improve and serve you better.\n" +
-                        "If you have any questions or need further assistance regarding your order or any other book-related queries, please don't hesitate to reach out. Our dedicated customer service team is here to help.\n" +
-                        "Once again, thank you for being a valued customer of Book Depository. We look forward to serving you again in the future! "+ purchase.getBook().getName() +"\n" +
-                        "Best regards, The Trio's Bookstore Team at Book Depository");
+                "Dear " + user.getUserName() + ",\n" + "\n" + "This is a summary of your order " + "\n"
+                     + "Invoice: " + "\n" + "Book Name: " + purchase.getBook().getName() + "." + "\n" + "Price: " + "$" + purchase.getBook().getPrice() + "." + "\n" +
+                         "Purchase Date: " + purchase.getCreatedAt() + "\n" + "\n" +
+                         "See you later!");
         return "redirect:/buySuccess";
     }
 

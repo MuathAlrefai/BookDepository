@@ -13,7 +13,7 @@
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/homePage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Book Depository</title>
 </head>
 <body class="p-0 m-0 border-0 bd-example">
@@ -44,6 +44,7 @@
                 <input class="form-control me-2" type="search" name="keyword" placeholder="Search For Titles" aria-label="Search Books" style="border-radius: 3px;">
                 <button class="btn btn" type="submit" style="color: white; background-color: #10bdd7; border-radius: 3px;">Search</button>
             </form>
+            <%--<div class="dropdown-menu" id="results"></div>--%>
             <ul>
                 <div style="display: flex; justify-content: space-evenly; align-items: center; gap: 80px;">
                     <li>
@@ -176,5 +177,27 @@
 <!-- SLIDER -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.js'></script>
 <script  src="./script.js"></script>
+<%--<script>
+    $(document).ready(function() {
+        $("#searchInput").on("input", function() {
+            let name= $(this).val();
+
+            $.ajax({
+                url: "/searchh",
+                type: "GET",
+                data: {
+                    name: name
+                },
+                success: function(data) {
+                    var resultsList = $("#results");
+                    resultsList.empty();
+                    data.forEach(function(book) {
+                        resultsList.append("<a href='#'>" + book.name + "</a>");
+                    });
+                }
+            });
+        });
+    });
+</script>--%>
 </body>
 </html>

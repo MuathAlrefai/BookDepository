@@ -51,8 +51,8 @@ public class BookService {
         }
     }
 
-    public List<Book> searchBooks(String keyword) {
-        return bookRepository.findByNameContainingIgnoreCase(keyword);
+    public List<Book> searchBook(String name) {
+        return bookRepository.findByNameContainingIgnoreCase(name);
     }
 
 }

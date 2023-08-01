@@ -90,6 +90,16 @@
 
                         <input type="submit" value="Follow Author" class="btn btn-primary">
                     </form></p>
+                    <c:if test="${currentUser.id == 1}">
+                        <form action="/addGenreToBook/${book.id}" method="post">
+                            <select name="genreId">
+                                <c:forEach var="genre" items="${unassignedGenres}">
+                                    <option value="${genre.id}"><c:out value="${genre.name}"/></option>
+                                </c:forEach>
+                                <input type="submit" value="add">
+                            </select>
+                        </form>
+                    </c:if>
                 </div>
             </div>
             <div class="content__bio">
